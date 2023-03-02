@@ -1,0 +1,29 @@
+
+body {
+  margin: 0;
+  padding: 0;
+  background-color: black;
+}
+
+/*
+.container-categorias {
+  float: left;
+}
+
+.container-acessados-recentemente {
+  float: right;
+}
+*/
+
+.container-categorias {
+    position: absolute;
+    top: 0;
+    left: 0;
+}
+  
+.container-acessados-recentemente {
+    position: absolute;
+    top: 0;
+    right: 0;
+}
+  
