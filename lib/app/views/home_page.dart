@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
-import 'package:tcc/app/views/estudo_cicatrizacao.dart';
-import 'package:tcc/app/views/estudo_curativos.dart';
-import 'package:tcc/app/views/estudo_secrecoes.dart';
-import 'package:tcc/app/views/estudo_tecidos.dart';
-import 'package:tcc/app/views/estudo_tratamentos.dart';
-import 'estudo_lesoes.dart';
+import 'package:tcc/app/views/curativos/estudo_curativos.dart';
+import 'package:tcc/app/views/secrecoes/estudo_secrecoes.dart';
+import 'package:tcc/app/views/tecidos/estudo_tecidos.dart';
+import 'package:tcc/app/views/tratamentos/estudo_tratamentos.dart';
+import 'cicatrizacao/estudo_cicatrizacao.dart';
+import 'lesoes/estudo_lesoes.dart';
 
 // ignore: non_constant_identifier_names
 void PaginaEstudoLesoes(BuildContext context) {
@@ -64,9 +64,9 @@ class _HomePageState extends State<HomePage> {
       appBar: AppBar(
         backgroundColor: const Color.fromARGB(255, 250, 249, 249),
         title: const Text(
-          'Aplicativo Feridas',
+          'Feridas: Estudo Fácil',
           style: TextStyle(
-            color: Color.fromRGBO(128, 128, 128, 100),
+            color: Color.fromRGBO(70, 130, 180, 100),
             fontSize: 20.0,
             fontFamily: 'Roboto',
           ),
@@ -79,7 +79,7 @@ class _HomePageState extends State<HomePage> {
           child: IconButton(
             icon: const Icon(
               Icons.menu,
-              color: Color.fromRGBO(153, 184, 196, 100),
+              color: Color.fromRGBO(70, 130, 180, 100),
               size: 40.0,
             ),
             onPressed: () {
@@ -144,7 +144,7 @@ class _HomePageState extends State<HomePage> {
                     },
                     style: ElevatedButton.styleFrom(
                       textStyle: const TextStyle(fontSize: 16),
-                      backgroundColor: const Color.fromRGBO(176, 196, 222, 100),
+                      backgroundColor: const Color.fromRGBO(109, 157, 197, 100),
                       fixedSize: const Size(170, 60),
                       shape: RoundedRectangleBorder(
                         borderRadius: BorderRadius.circular(
@@ -169,7 +169,7 @@ class _HomePageState extends State<HomePage> {
                   },
                   style: ElevatedButton.styleFrom(
                     textStyle: const TextStyle(fontSize: 16),
-                    backgroundColor: const Color.fromRGBO(176, 196, 222, 100),
+                    backgroundColor: const Color.fromRGBO(109, 157, 197, 100),
                     fixedSize: const Size(170, 60),
                     shape: RoundedRectangleBorder(
                       borderRadius: BorderRadius.circular(

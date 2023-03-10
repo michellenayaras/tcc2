@@ -28,9 +28,12 @@ environment:
 # the latest version available on pub.dev. To see which dependencies have newer
 # versions available, run `flutter pub outdated`.
 dependencies:
-  sqflite: ^2.2.5
   flutter:
     sdk: flutter
+  sqflite: ^2.0.0+3
+  path: ^1.8.0
+  debounce_throttle: ^2.0.0
+  flutter_icons: ^1.1.0
   
 
 
@@ -70,6 +73,41 @@ flutter:
   - assets/images/curativo.png
   - assets/images/pele.png
   - assets/images/wound.png
+  - assets/images/ferida_superficial.jpg
+  - assets/images/ferida_profunda_superficial.jpg
+  - assets/images/ferida_profunda_total.jpg
+  - assets/images/acidental_traumática.jpg
+  - assets/images/intencional_cirurgica.jpg
+  - assets/images/patológicas.jpg
+  - assets/images/iatrogênicas.jpg
+  - assets/images/fatores_causais_externos.jpg
+  - assets/images/aguda.jpg
+  - assets/images/cronicas.jpg
+  - assets/images/limpas_ou_assepticas.jpg
+  - assets/images/limpas_contaminadas.jpg
+  - assets/images/contaminadas.jpg
+  - assets/images/feridas_infectadas.jpg
+  - assets/images/estagio_I.jpg
+  - assets/images/estagio_II.jpg
+  - assets/images/estagio_III.jpg
+  - assets/images/estagio_IV.jpg
+  - assets/images/feridas_mecanicas.png
+  - assets/images/feridas_laceradas.jpg
+  - assets/images/feridas_quimicas.jpg
+  - assets/images/feridas_termicas.jpg
+  - assets/images/feridas_eletricidade.jpg
+  - assets/images/feridas_radiação.png
+  - assets/images/feridas_incisas.jpg
+  - assets/images/feridas_contusas.jpg
+  - assets/images/feridas_perfurantes.jpg
+  - assets/images/feridas_oncológicas.jpg
+  - assets/images/ulcera_arterial.jpg
+  - assets/images/lesão_por_pressão.jpg
+  - assets/images/ulcera_venosa.jpg
+  - assets/images/ulcera_arterial.jpg
+  - assets/images/feridas_vasculogênicas.jpg
+  - assets/images/queimaduras.jpg
+  - assets/images/fístula.jpg
 
 
 

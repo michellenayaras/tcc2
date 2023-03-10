@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:tcc/app/views/home_page.dart';
-import 'app/views/estudo_lesoes.dart';
-import 'app/views/estudo_tecidos.dart';
+import 'app/views/lesoes/estudo_lesoes.dart';
+import 'app/views/tecidos/estudo_tecidos.dart';
 
 void main() {
   runApp(const MyApp());
@@ -19,9 +19,9 @@ class MyApp extends StatelessWidget {
       home: const HomePage(),
       debugShowCheckedModeBanner: false,
       routes: {
-      '/estudo_lesoes': (context) => const EstudoLesoes(),
-      '/estudo_tecidos': (context) => const EstudoTecidos(),
-},
+        '/estudo_lesoes': (context) => const EstudoLesoes(),
+        '/estudo_tecidos': (context) => const EstudoTecidos(),
+      },
     );
   }
 }
