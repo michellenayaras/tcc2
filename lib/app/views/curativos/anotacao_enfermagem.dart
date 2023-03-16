@@ -1,22 +1,27 @@
 import 'package:flutter/material.dart';
-import 'package:tcc/app/views/lesoes/estudo_tamanho_lesao.dart';
+import 'package:tcc/app/views/curativos/etapas_execucao.dart';
+import 'package:tcc/app/views/curativos/materiais_necessarios.dart';
+import 'package:tcc/app/views/curativos/tipos_coberturas.dart';
+import 'package:tcc/app/views/curativos/tipos_curativos.dart';
 import '../../controllers/banco_de_dados.dart';
 
-class EstudoLesoesIntroducao extends StatefulWidget {
-  const EstudoLesoesIntroducao({Key? key}) : super(key: key);
+class EstudoCurativosAnotacaoEnfermagem extends StatefulWidget {
+  const EstudoCurativosAnotacaoEnfermagem({Key? key}) : super(key: key);
 
   @override
   // ignore: library_private_types_in_public_api
-  _EstudoLesoesIntroducaoState createState() => _EstudoLesoesIntroducaoState();
+  _EstudoCurativosAnotacaoEnfermagemState createState() =>
+      _EstudoCurativosAnotacaoEnfermagemState();
 }
 
-class _EstudoLesoesIntroducaoState extends State<EstudoLesoesIntroducao> {
+class _EstudoCurativosAnotacaoEnfermagemState
+    extends State<EstudoCurativosAnotacaoEnfermagem> {
   late Future<List<Map<String, dynamic>>> _data;
 
   @override
   void initState() {
     super.initState();
-    _data = MyDatabase().getData('Lesões de pele');
+    _data = MyDatabase().getData('Anotação de enfermagem');
   }
 
   @override
@@ -52,11 +57,11 @@ class _EstudoLesoesIntroducaoState extends State<EstudoLesoesIntroducao> {
             color: Color.fromRGBO(62, 132, 158, 100),
           ),
           onPressed: () {
-            Navigator.pushNamed(context, '/estudo_lesoes');
+            Navigator.pushNamed(context, '/estudo_curativos');
           },
         ),
         title: const Text(
-          'Introdução',
+          'Anotação de enfermagem',
           style: TextStyle(
             color: Color.fromRGBO(62, 132, 158, 100),
             fontSize: 20.0,
@@ -72,51 +77,67 @@ class _EstudoLesoesIntroducaoState extends State<EstudoLesoesIntroducao> {
         builder: (context, snapshot) {
           if (snapshot.hasData) {
             final data = snapshot.data!;
-            return ListView.builder(
-              padding: const EdgeInsets.symmetric(vertical: 16.0),
-              itemCount: data.length,
-              itemBuilder: (context, index) {
-                final item = data[index];
-                final text = item['content'] as String;
-                final firstParagraphEndIndex = text.indexOf('.');
-                final firstParagraph =
-                    text.substring(0, firstParagraphEndIndex + 1);
-                final secondParagraph =
-                    text.substring(firstParagraphEndIndex + 1).trim();
-                final fullText = '$firstParagraph\n\n$secondParagraph';
+            return Container(
+              padding: const EdgeInsets.all(12.0),
+              child: ListView.builder(
+                padding: const EdgeInsets.symmetric(vertical: 16.0),
+                itemCount: data.length,
+                itemBuilder: (context, index) {
+                  final item = data[index];
+                  final text = item['content'] as String;
+                  final lines = text.split(';');
 
-                return Container(
-                  padding: const EdgeInsets.all(12.0),
-                  child: ListTile(
-                    title: Text(
-                      fullText,
-                      style: const TextStyle(
-                        fontFamily: 'Roboto',
-                        fontSize: 18,
-                        fontWeight: FontWeight.normal,
-                        fontStyle: FontStyle.normal,
-                        letterSpacing: 0.15,
-                        wordSpacing: 0.5,
-                        height: 1.5,
-                      ),
-                      textAlign: TextAlign.justify,
+                  return Container(
+                    padding: const EdgeInsets.all(12.0),
+                    child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        const Text(
+                          'Conforme o guia recomendações para registros de enfermagem do COFEN, a anotação de curativo deve conter:',
+                          style: TextStyle(
+                            fontFamily: 'Roboto',
+                            fontSize: 18,
+                            fontWeight: FontWeight.normal,
+                            fontStyle: FontStyle.normal,
+                            letterSpacing: 0.15,
+                            wordSpacing: 0.5,
+                            height: 1.5,
+                          ),
+                          textAlign: TextAlign.justify,
+                        ),
+                        const SizedBox(height: 12.0),
+                        Text.rich(
+                          TextSpan(
+                            style: const TextStyle(
+                              fontFamily: 'Roboto',
+                              fontSize: 18,
+                              fontWeight: FontWeight.normal,
+                              fontStyle: FontStyle.normal,
+                              letterSpacing: 0.15,
+                              wordSpacing: 0.5,
+                              height: 1.5,
+                              color: Colors.black87,
+                            ),
+                            children: [
+                              for (final line in lines)
+                                TextSpan(text: '$line;\n'),
+                            ],
+                          ),
+                          textAlign: TextAlign.justify,
+                        ),
+                      ],
                     ),
-                    onTap: () {
-                      // Navegar para a tela do tema correspondente
-                    },
-                  ),
-                );
-              },
+                  );
+                },
+              ),
             );
           } else if (snapshot.hasError) {
-            // ignore: prefer_const_constructors
-            return Center(
-              child: const Text('Erro ao carregar os dados do banco de dados'),
+            return const Center(
+              child: Text('Erro ao carregar os dados do banco de dados'),
             );
           } else {
-            // ignore: prefer_const_constructors
-            return Center(
-              child: const CircularProgressIndicator(),
+            return const Center(
+              child: CircularProgressIndicator(),
             );
           }
         },
@@ -131,10 +152,16 @@ class _EstudoLesoesIntroducaoState extends State<EstudoLesoesIntroducao> {
               width: 112,
               child: ElevatedButton(
                 onPressed: () {
-                  // Ação do botão anterior
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                      builder: (context) =>
+                          const EstudoCurativosEtapasExecucao(),
+                    ),
+                  );
                 },
                 style: ElevatedButton.styleFrom(
-                  backgroundColor: Colors.white30,
+                  backgroundColor: const Color.fromRGBO(62, 132, 158, 100),
                   shape: RoundedRectangleBorder(
                     borderRadius:
                         BorderRadius.circular(20), // set the border radius
@@ -150,7 +177,7 @@ class _EstudoLesoesIntroducaoState extends State<EstudoLesoesIntroducao> {
                     SizedBox(
                         width: 1), // adicione um espaço entre o ícone e o texto
                     Text(
-                      'Anteriorrrrrrr',
+                      'Anterior',
                       style: TextStyle(
                         fontFamily: 'Roboto',
                         color: Colors.white,
@@ -169,7 +196,8 @@ class _EstudoLesoesIntroducaoState extends State<EstudoLesoesIntroducao> {
                   Navigator.push(
                     context,
                     MaterialPageRoute(
-                        builder: (context) => const EstudoLesoesProfundidade()),
+                        builder: (context) =>
+                            const EstudoCurativosTiposCurativos()),
                   );
                 },
                 style: ElevatedButton.styleFrom(

@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:tcc/app/views/curativos/estudo_curativos.dart';
 import 'package:tcc/app/views/home_page.dart';
 import 'app/views/lesoes/estudo_lesoes.dart';
 import 'app/views/tecidos/estudo_tecidos.dart';
@@ -21,6 +22,7 @@ class MyApp extends StatelessWidget {
       routes: {
         '/estudo_lesoes': (context) => const EstudoLesoes(),
         '/estudo_tecidos': (context) => const EstudoTecidos(),
+        '/estudo_curativos': (context) => const EstudoCurativos(),
       },
     );
   }

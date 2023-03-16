@@ -108,6 +108,16 @@ flutter:
   - assets/images/feridas_vasculogênicas.jpg
   - assets/images/queimaduras.jpg
   - assets/images/fístula.jpg
+  - assets/images/derme.jpg
+  - assets/images/simples.jpg
+  - assets/images/estratificado.jpg
+  - assets/images/pseudoestratificado.jpg
+  - assets/images/tecido_muscular.jpg
+  - assets/images/kocher.jpg
+  - assets/images/kelly.jpg
+  - assets/images/anatômica.jpg
+  - assets/images/dente_de_rato.jpg
+  - assets/images/tipos_cicatrização.jpg
 
 
 

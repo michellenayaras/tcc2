@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:tcc/app/views/lesoes/estudo_comprometimento_tecidual.dart';
-import 'package:tcc/app/views/lesoes/estudo_evolucao.dart';
 import '../../controllers/banco_de_dados.dart';
 
 class EstudoLesoesTiposFeridas extends StatefulWidget {

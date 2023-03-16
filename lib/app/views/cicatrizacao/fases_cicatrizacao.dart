@@ -1,22 +1,24 @@
 import 'package:flutter/material.dart';
-import 'package:tcc/app/views/lesoes/estudo_tamanho_lesao.dart';
+import 'package:tcc/app/views/curativos/tipos_coberturas.dart';
 import '../../controllers/banco_de_dados.dart';
 
-class EstudoLesoesIntroducao extends StatefulWidget {
-  const EstudoLesoesIntroducao({Key? key}) : super(key: key);
+class EstudoCicatrizacaoFasesCicatrizacao extends StatefulWidget {
+  const EstudoCicatrizacaoFasesCicatrizacao({Key? key}) : super(key: key);
 
   @override
   // ignore: library_private_types_in_public_api
-  _EstudoLesoesIntroducaoState createState() => _EstudoLesoesIntroducaoState();
+  _EstudoCicatrizacaoFasesCicatrizacaoState createState() =>
+      _EstudoCicatrizacaoFasesCicatrizacaoState();
 }
 
-class _EstudoLesoesIntroducaoState extends State<EstudoLesoesIntroducao> {
+class _EstudoCicatrizacaoFasesCicatrizacaoState
+    extends State<EstudoCicatrizacaoFasesCicatrizacao> {
   late Future<List<Map<String, dynamic>>> _data;
 
   @override
   void initState() {
     super.initState();
-    _data = MyDatabase().getData('Lesões de pele');
+    _data = MyDatabase().getData('Fases da cicatrização de feridas');
   }
 
   @override
@@ -52,11 +54,11 @@ class _EstudoLesoesIntroducaoState extends State<EstudoLesoesIntroducao> {
             color: Color.fromRGBO(62, 132, 158, 100),
           ),
           onPressed: () {
-            Navigator.pushNamed(context, '/estudo_lesoes');
+            Navigator.pushNamed(context, '/estudo_curativos');
           },
         ),
         title: const Text(
-          'Introdução',
+          'Fases da cicatrização de feridas',
           style: TextStyle(
             color: Color.fromRGBO(62, 132, 158, 100),
             fontSize: 20.0,
@@ -67,7 +69,7 @@ class _EstudoLesoesIntroducaoState extends State<EstudoLesoesIntroducao> {
         toolbarHeight: 70.0,
         elevation: 2.0,
       ),
-      body: FutureBuilder<List<Map<String, dynamic>>>(
+    body: FutureBuilder<List<Map<String, dynamic>>>(
         future: _data,
         builder: (context, snapshot) {
           if (snapshot.hasData) {
@@ -150,7 +152,7 @@ class _EstudoLesoesIntroducaoState extends State<EstudoLesoesIntroducao> {
                     SizedBox(
                         width: 1), // adicione um espaço entre o ícone e o texto
                     Text(
-                      'Anteriorrrrrrr',
+                      'Anterior',
                       style: TextStyle(
                         fontFamily: 'Roboto',
                         color: Colors.white,
@@ -169,7 +171,8 @@ class _EstudoLesoesIntroducaoState extends State<EstudoLesoesIntroducao> {
                   Navigator.push(
                     context,
                     MaterialPageRoute(
-                        builder: (context) => const EstudoLesoesProfundidade()),
+                        builder: (context) =>
+                            const EstudoCurativosTiposCoberturas()),
                   );
                 },
                 style: ElevatedButton.styleFrom(

@@ -22,6 +22,20 @@ class MyDatabase {
         await insertLesoesInfeccao(db);
         await insertLesoesComprometimentoTecidual(db);
         await insertLesoesTiposFeridas(db);
+        await insertTecidoAnatomiaFisiologia(db);
+        await insertTecidoFuncoesPele(db);
+        await insertTecidoEpitelial(db);
+        await insertTecidoConjuntivo(db);
+        await insertTecidoMuscular(db);
+        await insertTecidoNervoso(db);
+        await insertCurativoMateriaisNecessarios(db);
+        await insertCurativoTecnicasCurativos(db);
+        await insertCurativoTiposCoberturas(db);
+        await insertCurativoEtapasExecucao(db);
+        await insertCurativoAnotacaoenfermagem(db);
+        await insertCurativoTiposCurativos(db);
+        await insertCicatrizacaoTiposFeridas(db);
+        await insertCicatrizacaoFasesFeridas(db);
       },
       version: 1,
     );
@@ -119,6 +133,193 @@ class MyDatabase {
     );
   }
 
+  Future<void> insertTecidoAnatomiaFisiologia(Database db) async {
+    await db.insert(
+      'study',
+      {
+        'title': 'Anatomia e fisiologia da pele',
+        'content':
+            'Epiderme (1ª camada) É a camada mais externa da pele e consiste primariamente em queratinócitos, que a impermeabilizam. A epiderme está em constante renovação, as células mais antigas são substituídas por outras mais novas em uma renovação que ocorre em média a cada 12 dias.Derme (2ª camada)Localizada entre a epiderme e a hipoderme, a derme é formada por tecido conjuntivo que contém fibras protéicas, vasos sanguíneos e linfáticos, terminações nervosas, órgãos sensoriais e glândulas. As fibras são produzidas por células chamadas fibroblastos, que permitem a elasticidade, tração e conferem maior resistência à pele.Hipoderme (3ª camada) A última camada da pele é basicamente formada por células de gordura e faz conexão entre a derme e a fáscia muscular; atuando como reservatório energético, isolante térmico, proteção contra choques mecânicos, fixação dos órgãos e modelando a superfície corporal.'
+
+        //'image': imageBytes,
+      },
+      conflictAlgorithm: ConflictAlgorithm.replace,
+    );
+  }
+
+  Future<void> insertTecidoFuncoesPele(Database db) async {
+    await db.insert(
+      'study',
+      {
+        'title': 'Funções da pele',
+        'content':
+            '- Força e elasticidade\n- Regeneração\n- Resiste à perda de água e eletrólitos\n- Responsável pela produção de Vitamina D\n- Secreção e Excreção\n- Protege contra agentes químicos, físicos e biológicos\n- Recebe estímulos sensoriais externos- Armazenagem de nutrientes (lipídios, água, vitaminas etc)\n- Imunorregulação\n- Promove estímulo visual, olfatório e tátil'
+
+        //'image': imageBytes,
+      },
+      conflictAlgorithm: ConflictAlgorithm.replace,
+    );
+  }
+
+  Future<void> insertTecidoEpitelial(Database db) async {
+    await db.insert(
+      'study',
+      {
+        'title': 'Tecido epitelial',
+        'content':
+            'Tecido formado por células justapostas e uma pequena quantidade de matriz extracelular. Uma de suas funções é revestir a superfície do corpo e algumas cavidades. Esse tecido é responsável também pela formação das diversas glândulas presentes em nosso corpo.'
+
+        //'image': imageBytes,
+      },
+      conflictAlgorithm: ConflictAlgorithm.replace,
+    );
+  }
+
+  Future<void> insertTecidoConjuntivo(Database db) async {
+    await db.insert(
+      'study',
+      {
+        'title': 'Tecido conjuntivo',
+        'content':
+            'É um tecido de ligação que atua na sustentação e preenchimento das estruturas do corpo, além do transporte de substâncias, pode ser classificado de acordo com o material e o tipo de células que o compõem, cujas funções são determinadas.Tecido Conjuntivo propriamente dito (frouxo ou denso): sua matriz extracelular é abundante e rica em fibras colágenas, reticulares e elásticas, além de moléculas que atuam no papel de nutrir outros tecidos. Estão presentes diversos tipos de células, tais como: fibroblastos, macrófagos, linfócitos, adipócitos, entre outras.Tecido Hematopoiético: também denominado hemocitopoiético, é responsável pela formação das células sanguíneas e componentes do sangue. Está presente na medula óssea, no interior de alguns ossos.Tecido Cartilaginoso: composto especialmente por fibras colágenas, esse é o tecido que compõe as cartilagens. Ajuda a dar sustentação e absorve impactos nos ossos.Tecido Adiposo: constituído de adipócitos, esse tecido atua como isolante térmico e como reserva de energia.Tecido Ósseo: tecido rico em fibras colágenas e minerais que o tornam rígido, atuando na sustentação do corpo.'
+
+        //'image': imageBytes,
+      },
+      conflictAlgorithm: ConflictAlgorithm.replace,
+    );
+  }
+
+  Future<void> insertTecidoMuscular(Database db) async {
+    await db.insert(
+      'study',
+      {
+        'title': 'Tecido muscular',
+        'content':
+            'Esse tecido apresenta células alongadas com incrível capacidade de contração, esse tipo de tecido está ligado à nossa locomoção e alimentação, além de garantir que as células do corpo recebam nutrientes e oxigênio. Tecido muscular estriado esquelético: Apresenta células longas, cilíndricas e com vários núcleos, os quais estão localizados na periferia delas. Como o nome sugere, esse tecido apresenta estriações, sendo elas transversais. Seus feixes de células são longos e podem atingir até 30 cm, enquanto o diâmetro das fibras varia entre 10 µm a 100 µm. Tecido muscular estriado cardíaco: Está localizado no coração e, assim como o anterior, apresenta estriações em suas células. Elas são alongadas e ramificadas, sendo essas ramificações unidas por estruturas denominadas discos intercalares.Esses discos transmitem sinais de uma célula para outra, garantem a sincronização da contração cardíaca e atuam impedindo que as células separem-se quando ocorre o batimento do coração.Tecido muscular não estriado ou liso:É formado por células que não apresentam estriações, sendo essa uma característica que permite fácil diferenciação dos outros tipos de tecido. Suas células são longas, com centro mais espesso e extremidades afiladas. Elas apresentam apenas um único núcleo, disposto no centro de cada uma delas.'
+
+        //'image': imageBytes,
+      },
+      conflictAlgorithm: ConflictAlgorithm.replace,
+    );
+  }
+
+  Future<void> insertTecidoNervoso(Database db) async {
+    await db.insert(
+      'study',
+      {
+        'title': 'Tecido nervoso',
+        'content':
+            'É formado por células que possuem como papel principal a transmissão de impulsos nervosos.Neurônios: Os neurônios são células responsáveis pelos impulsos nervosos, altamente especializadas, dotadas de um corpo celular e numerosos prolongamentos citoplasmáticos, denominados neurofibras ou fibras nervosas.Gliócitos: Os gliócitos possuem a função de envolver e nutrir os neurônios, mantendo-os unidos. Os principais tipos de células dessa natureza são.Nervos: As fibras nervosas organizam-se em feixes. Cada feixe, por sua vez, é envolvido por uma bainha conjuntiva denominada perineuro. Vários feixes agrupados paralelamente formam um nervo. O nervo também é envolvido por uma bainha de tecido conjuntivo chamada epineuro.'
+
+        //'image': imageBytes,
+      },
+      conflictAlgorithm: ConflictAlgorithm.replace,
+    );
+  }
+
+  Future<void> insertCurativoTecnicasCurativos(Database db) async {
+    await db.insert(
+      'study',
+      {
+        'title': 'Técnicas de curativos utilizados',
+        'content':
+            'Curativo realizado na unidade de saúde, com material estéril (pinças ou luvas), solução fisiológica 0,9% aquecida e cobertura estéril. Curativo realizado no domicílio, pelo usuário e/ou familiar. Realizado com material limpo, água corrente ou soro fisiológico 0,9% e cobertura estéril.'
+        //'image': imageBytes,
+      },
+      conflictAlgorithm: ConflictAlgorithm.replace,
+    );
+  }
+
+  Future<void> insertCurativoTiposCoberturas(Database db) async {
+    await db.insert(
+      'study',
+      {
+        'title': 'Tipos de coberturas de curativo',
+        'content':
+            'Somente protegem e cobrem as feridas. Proporcionam um micro-ambiente ótimo para a cura da ferida.  Resgatam ou estimulam a liberação de substâncias durante o processo de cura.'
+        //'image': imageBytes,
+      },
+      conflictAlgorithm: ConflictAlgorithm.replace,
+    );
+  }
+
+  Future<void> insertCurativoMateriaisNecessarios(Database db) async {
+    await db.insert(
+      'study',
+      {
+        'title': 'Materiais necessários',
+        'content':
+            '• Frasco de SF 0,9%;\n• Álcool 70% e algodão;\n• Pacotes de gaze estéril;\n• Saco de lixo para curativo;\n• Fita adesiva hipoalergênica;\n• Agulha 40x12;\n• Lençol;\n• Impermeável.'
+        //'image': imageBytes,
+      },
+      conflictAlgorithm: ConflictAlgorithm.replace,
+    );
+  }
+
+  Future<void> insertCurativoEtapasExecucao(Database db) async {
+    await db.insert(
+      'study',
+      {
+        'title': 'Etapas para execução',
+        'content':
+            '1. Higienizar as mãos conforme recomendações da ANVISA/OMS antes e após preparar o material;2. Reunir todo o material;3. Colocar a bandeja com o material sobre a mesa-de-cabeceira, previamente desinfetada, mantendo o ambiente livre de correntes de ar;4. Explicar o procedimento e a finalidade ao paciente;5. Garantir a privacidade do paciente, descobrir apenas a área a ser tratada;6. Colocar o cliente em posição confortável, adequada e segura;7. Colocar o recipiente de descarte próximo ao paciente;8. Colocar impermeável e/ou lençóis próximo à ferida para reter a solução drenada, evitando umedecer outras áreas;9. Paramentar-se com os EPI;10. Abrir o pacote de curativo estéril com técnica asséptica. Na ausência do pacote de curativo, realizar com luvas de procedimento e estéril;11. Abrir os pacotes de gazes esterilizadas e colocá-las sobre o campo estéril com técnica asséptica;12. Colocar as pinças sobre o campo da bandeja com os cabos voltados para a borda, manuseando-as pelo lado externo do campo. Primeiro par de pinças ( Kocher e dente de rato) posicionado próximo ao cliente;13. Fazer desinfecção da curvatura superior do frasco de SF0,9% ou do injetor de borracha do frasco de PVC do SF0,9% com algodão embebido em álcool a 70% e perfurá-los com agulha 40x12;14. Desprender a fita hipoalergênica com auxílio de pinça e gaze embebida em solução fisiológica;15.Continuar o curativo mantendo a pinça Kelly na mão dominante e a pinça anatômica permanecendo no campo para auxílio no preparo das gazes;16. Montar uma “trouxinha” de gazes esterilizadas utilizando a pinça cirúrgica, e umedecê-la com SF 0,9%;17. Iniciar a limpeza da ferida obedecendo o princípio do menos contaminado para o mais contaminado. Feridas cirúrgicas deve iniciar do leito da lesão até as bordas e feridas contaminadas a limpeza deve ser feita no sentido das bordas para o leito;18. Limpar a ferida em sentido único, utilizando as faces da “trouxinha” umedecida e trocando quantas vezes forem necessárias. Desprezá-las no recipiente de descarte;19. Remover ao máximo os exudatos (secreções, sangue), corpos estranhos e tecidos necrosados;20. Secar bem a gaze e aplicar produto adequado para cada tipo de tecido encontrado na lesão(cobertura primária), caso sejam indicados cremes e pomadas, usar a espátula ou tentacânula para a distribuição;21. Montar uma “trouxinha” de gazes esterilizadas e secas utilizando a pinça cirúrgica e passa-la sobre a ferida e depois em suas laterais, utilizando todas as faces e trocando-as quantas vezes forem necessárias;22. Ocluir a ferida com gaze, compressa ou outra cobertura externa (cobertura secundária) indicada para lesãoe fixá-las com fita adesiva hipoalergênica ou atadura;23.Identificar o curativo com nome data e hora. Realizar a troca de curativo conforme avaliação da ferida, produto realizado ou quando cobertura externa(cobertura secundária) estiver saturada(úmida);24. Recolher os materiais;25. Retirar os EPI;26. Recompor a unidade e o cliente;27. Colocar o cliente em posição confortável, adequada e segura;28. Dar destino adequado aos materiais e encaminhar bandeja, pinças, tesouras e bacias para o expurgo para posterior esterilização;29. Higienizar as mãos conforme recomendações da ANVISA/OMS;30. Proceder às anotações de enfermagem no prontuário constando: técnica do curativo, características da ferida e da pele adjacente, quantificação de materiais utilizados e ocorrências adversas e as medidas tomadas.'
+        //'image': imageBytes,
+      },
+      conflictAlgorithm: ConflictAlgorithm.replace,
+    );
+  }
+
+  Future<void> insertCurativoAnotacaoenfermagem(Database db) async {
+    await db.insert(
+      'study',
+      {
+        'title': 'Anotação de enfermagem',
+        'content':
+            '• Local da lesão e sua dimensão;• Data e horário;• Sinais e sintomas observados (presença de secreção, coloração, odor,quantidade, etc.);• Relatar necessidade de desbridamento;• Tipo de curativo (oclusivo, aberto, simples, compressivo, presença de dreno,etc.);• Material prescrito e utilizado;• Relatar o nível de dor do paciente ao procedimento, a fim de avaliar necessidade de analgesia prévia;• Nome completo e Coren do responsável pelo procedimento.'
+        //'image': imageBytes,
+      },
+      conflictAlgorithm: ConflictAlgorithm.replace,
+    );
+  }
+
+  Future<void> insertCurativoTiposCurativos(Database db) async {
+    await db.insert(
+      'study',
+      {
+        'title': 'Tipos de curativos',
+        'content':
+            ' A partir de 24 horas já podem ficar expostas, pois já se formou a rede de fibrina protetora impossibilitando a entrada de microorganismos, se o usuário desejar que a incisão fique coberta, poderá ser realizado apenas um curativo passivo. Irrigação com solução fisiológica 0,9%, morna (em torno de 37°C) , utilizando seringa de 20ml e agulha 40X12 (a pressão exercida no leito da lesão não deve ultrapassar 15 psi, a fim de preservar os neotecidos formados). Consiste no curativo tradicional, com uso de pinças. É considerado um curativo complexo, o dreno tem como objetivo: proporcionar a drenagem de sangue, exsudato, bile e outros fluidos corpóreos, evitando acúmulo destes na cavidade.'
+        //'image': imageBytes,
+      },
+      conflictAlgorithm: ConflictAlgorithm.replace,
+    );
+  }
+
+  Future<void> insertCicatrizacaoTiposFeridas(Database db) async {
+    await db.insert(
+      'study',
+      {
+        'title': 'Tipos de cicatrização de feridas',
+        'content':
+            'Ocorre em feridas pequenas, nas quais as bordas não são muito afastadas, sem infecção e sem muito edema, como, por exemplo, as feridas operatórias.  Ocorre grande perda de tecidos, maior afastamento das bordas, com ou sem infecção. Nesse caso, pode-se tentar a aproximação das bordas da lesão. Porém, sendo esse um processo difícil, as lesões devem ser mantidas abertas, deixando-as se fecharem por meio de epitelização e contração.'
+        //'image': imageBytes,
+      },
+      conflictAlgorithm: ConflictAlgorithm.replace,
+    );
+  }
+
+Future<void> insertCicatrizacaoFasesFeridas(Database db) async {
+    await db.insert(
+      'study',
+      {
+        'title': 'Fases da cicatrização de feridas',
+        'content':
+            'Fase inflamatória: ocorre imediatamente após o trauma e dura cerca de três a quatro dias. É caracterizada pelos sinais e sintomas inflamatórios, como edema, hiperemia, calor moderado e dor. A inflamação tem o objetivo de minimizar os efeitos do traumatismo ou bactérias patogênicas.Fase Proliferativa: é caracterizada pela deposição do colágeno, formação do tecido de granulação, contração da ferida, reepitelização e angiogênese. Os macrófagos são importantes nessa fase, produzindo fatores de crescimento para atrair fibroblastos que produzem fibras de colágeno.Fase de Maturação: pode começar cerca de três semanas após o ferimento e durar vários meses ou até anos. É caracterizada pelo fortalecimento e remodelagem das fibras de colágeno, que são reorganizadas formando ângulos com as margens da ferida. A cicatriz madura pode apresentar hiperpigmentação ou hipopigmentação e espessura palpável devido à fibrose da derme.'
+        //'image': imageBytes,
+      },
+      conflictAlgorithm: ConflictAlgorithm.replace,
+    );
+  }
   Future<List<Map<String, dynamic>>> getData(String title) async {
     final Database db = await createDatabase();
     return await db.query('study', where: 'title = ?', whereArgs: [title]);

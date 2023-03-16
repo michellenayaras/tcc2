@@ -1,22 +1,27 @@
 import 'package:flutter/material.dart';
-import 'package:tcc/app/views/lesoes/estudo_tamanho_lesao.dart';
+import 'package:tcc/app/views/curativos/anotacao_enfermagem.dart';
+import 'package:tcc/app/views/curativos/estudo_curativos.dart';
+import 'package:tcc/app/views/curativos/materiais_necessarios.dart';
+import 'package:tcc/app/views/curativos/tecnicas_curativos.dart';
 import '../../controllers/banco_de_dados.dart';
 
-class EstudoLesoesIntroducao extends StatefulWidget {
-  const EstudoLesoesIntroducao({Key? key}) : super(key: key);
+class EstudoCurativosTiposCurativos extends StatefulWidget {
+  const EstudoCurativosTiposCurativos({Key? key}) : super(key: key);
 
   @override
   // ignore: library_private_types_in_public_api
-  _EstudoLesoesIntroducaoState createState() => _EstudoLesoesIntroducaoState();
+  _EstudoCurativosTiposCurativosState createState() =>
+      _EstudoCurativosTiposCurativosState();
 }
 
-class _EstudoLesoesIntroducaoState extends State<EstudoLesoesIntroducao> {
+class _EstudoCurativosTiposCurativosState
+    extends State<EstudoCurativosTiposCurativos> {
   late Future<List<Map<String, dynamic>>> _data;
 
   @override
   void initState() {
     super.initState();
-    _data = MyDatabase().getData('Lesões de pele');
+    _data = MyDatabase().getData('Tipos de curativos');
   }
 
   @override
@@ -52,11 +57,11 @@ class _EstudoLesoesIntroducaoState extends State<EstudoLesoesIntroducao> {
             color: Color.fromRGBO(62, 132, 158, 100),
           ),
           onPressed: () {
-            Navigator.pushNamed(context, '/estudo_lesoes');
+            Navigator.pushNamed(context, '/estudo_curativos');
           },
         ),
         title: const Text(
-          'Introdução',
+          'Tipos de curativos',
           style: TextStyle(
             color: Color.fromRGBO(62, 132, 158, 100),
             fontSize: 20.0,
@@ -72,41 +77,75 @@ class _EstudoLesoesIntroducaoState extends State<EstudoLesoesIntroducao> {
         builder: (context, snapshot) {
           if (snapshot.hasData) {
             final data = snapshot.data!;
-            return ListView.builder(
-              padding: const EdgeInsets.symmetric(vertical: 16.0),
-              itemCount: data.length,
-              itemBuilder: (context, index) {
-                final item = data[index];
-                final text = item['content'] as String;
-                final firstParagraphEndIndex = text.indexOf('.');
-                final firstParagraph =
-                    text.substring(0, firstParagraphEndIndex + 1);
-                final secondParagraph =
-                    text.substring(firstParagraphEndIndex + 1).trim();
-                final fullText = '$firstParagraph\n\n$secondParagraph';
+            return Container(
+              padding: const EdgeInsets.all(12.0),
+              child: ListView.builder(
+                padding: const EdgeInsets.symmetric(vertical: 16.0),
+                itemCount: data.length,
+                itemBuilder: (context, index) {
+                  final item = data[index];
+                  final text = item['content'] as String;
+                  final firstParagraphEndIndex = text.indexOf('.');
+                  final secondParagraphEndIndex =
+                      text.indexOf('.', firstParagraphEndIndex + 1);
+                  final thirdParagraphEndIndex =
+                      text.indexOf('.', secondParagraphEndIndex + 1);
+                  final firstParagraph =
+                      text.substring(0, firstParagraphEndIndex + 1);
+                  final secondParagraph = text
+                      .substring(firstParagraphEndIndex + 1,
+                          secondParagraphEndIndex + 1)
+                      .trim();
+                  final thirdParagraph = text
+                      .substring(secondParagraphEndIndex + 1,
+                          thirdParagraphEndIndex + 1)
+                      .trim();
+                  final fourthParagraph =
+                      text.substring(thirdParagraphEndIndex + 1).trim();
 
-                return Container(
-                  padding: const EdgeInsets.all(12.0),
-                  child: ListTile(
-                    title: Text(
-                      fullText,
-                      style: const TextStyle(
-                        fontFamily: 'Roboto',
-                        fontSize: 18,
-                        fontWeight: FontWeight.normal,
-                        fontStyle: FontStyle.normal,
-                        letterSpacing: 0.15,
-                        wordSpacing: 0.5,
-                        height: 1.5,
-                      ),
+                  return Container(
+                    padding: const EdgeInsets.all(12.0),
+                    child: RichText(
                       textAlign: TextAlign.justify,
+                      text: TextSpan(
+                        style: const TextStyle(
+                          fontFamily: 'Roboto',
+                          fontSize: 18,
+                          fontWeight: FontWeight.normal,
+                          fontStyle: FontStyle.normal,
+                          letterSpacing: 0.15,
+                          wordSpacing: 0.5,
+                          height: 1.5,
+                          color: Colors.black87,
+                        ),
+                        children: [
+                          const TextSpan(
+                            text:
+                                'Incisões cirúrgicas com bordos aproximados, cicatrização por primeira intenção:',
+                            style: TextStyle(fontWeight: FontWeight.bold),
+                          ),
+                          TextSpan(text: firstParagraph),
+                          const TextSpan(
+                            text: '\n\nFeridas abertas: ',
+                            style: TextStyle(fontWeight: FontWeight.bold),
+                          ),
+                          TextSpan(text: secondParagraph),
+                          const TextSpan(
+                            text: '\n\nLesões fechadas: ',
+                            style: TextStyle(fontWeight: FontWeight.bold),
+                          ),
+                          TextSpan(text: thirdParagraph),
+                          const TextSpan(
+                            text: '\n\nDrenos: ',
+                            style: TextStyle(fontWeight: FontWeight.bold),
+                          ),
+                          TextSpan(text: fourthParagraph),
+                        ],
+                      ),
                     ),
-                    onTap: () {
-                      // Navegar para a tela do tema correspondente
-                    },
-                  ),
-                );
-              },
+                  );
+                },
+              ),
             );
           } else if (snapshot.hasError) {
             // ignore: prefer_const_constructors
@@ -131,10 +170,16 @@ class _EstudoLesoesIntroducaoState extends State<EstudoLesoesIntroducao> {
               width: 112,
               child: ElevatedButton(
                 onPressed: () {
-                  // Ação do botão anterior
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                      builder: (context) =>
+                          const EstudoCurativosAnotacaoEnfermagem(),
+                    ),
+                  );
                 },
                 style: ElevatedButton.styleFrom(
-                  backgroundColor: Colors.white30,
+                  backgroundColor: const Color.fromRGBO(62, 132, 158, 100),
                   shape: RoundedRectangleBorder(
                     borderRadius:
                         BorderRadius.circular(20), // set the border radius
@@ -150,7 +195,7 @@ class _EstudoLesoesIntroducaoState extends State<EstudoLesoesIntroducao> {
                     SizedBox(
                         width: 1), // adicione um espaço entre o ícone e o texto
                     Text(
-                      'Anteriorrrrrrr',
+                      'Anterior',
                       style: TextStyle(
                         fontFamily: 'Roboto',
                         color: Colors.white,
@@ -166,23 +211,17 @@ class _EstudoLesoesIntroducaoState extends State<EstudoLesoesIntroducao> {
               width: 112,
               child: ElevatedButton(
                 onPressed: () {
-                  Navigator.push(
-                    context,
-                    MaterialPageRoute(
-                        builder: (context) => const EstudoLesoesProfundidade()),
-                  );
+                  // Ação do botão anterior
                 },
                 style: ElevatedButton.styleFrom(
-                  backgroundColor: const Color.fromRGBO(
-                      62, 132, 158, 100), // set the background color
+                  backgroundColor: Colors.white30,
                   shape: RoundedRectangleBorder(
                     borderRadius:
                         BorderRadius.circular(20), // set the border radius
                   ),
                 ),
                 child: Row(
-                  mainAxisAlignment:
-                      MainAxisAlignment.end, // centralizar o texto e o ícone
+                  mainAxisAlignment: MainAxisAlignment.end,
                   children: const [
                     Text(
                       'Próximo',
@@ -190,9 +229,10 @@ class _EstudoLesoesIntroducaoState extends State<EstudoLesoesIntroducao> {
                         fontFamily: 'Roboto',
                         color: Colors.white,
                       ),
-                      textAlign: TextAlign.justify,
+                      textAlign: TextAlign.center,
                     ),
-                    SizedBox(width: 1),
+                    SizedBox(
+                        width: 1), // adicione um espaço entre o ícone e o texto
                     Icon(
                       Icons.arrow_forward_ios_rounded, // set the icon
                       color: Colors.white, // set the icon color
