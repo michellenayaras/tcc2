@@ -36,6 +36,13 @@ class MyDatabase {
         await insertCurativoTiposCurativos(db);
         await insertCicatrizacaoTiposFeridas(db);
         await insertCicatrizacaoFasesFeridas(db);
+        await insertCicatrizacaoFormasCicatrizacao(db);
+        await insertSecrecoesTransudato(db);
+        await insertSecrecoesExsudato(db);
+        await insertSecrecoesExsudatoSeroso(db);
+        await insertSecrecoesExsudatoSanguinolento(db);
+        await insertSecrecoesExsudatoPurulento(db);
+        await insertSecrecoesExsudatoFibrinoso(db);
       },
       version: 1,
     );
@@ -308,18 +315,111 @@ class MyDatabase {
     );
   }
 
-Future<void> insertCicatrizacaoFasesFeridas(Database db) async {
+  Future<void> insertCicatrizacaoFasesFeridas(Database db) async {
     await db.insert(
       'study',
       {
         'title': 'Fases da cicatrização de feridas',
         'content':
-            'Fase inflamatória: ocorre imediatamente após o trauma e dura cerca de três a quatro dias. É caracterizada pelos sinais e sintomas inflamatórios, como edema, hiperemia, calor moderado e dor. A inflamação tem o objetivo de minimizar os efeitos do traumatismo ou bactérias patogênicas.Fase Proliferativa: é caracterizada pela deposição do colágeno, formação do tecido de granulação, contração da ferida, reepitelização e angiogênese. Os macrófagos são importantes nessa fase, produzindo fatores de crescimento para atrair fibroblastos que produzem fibras de colágeno.Fase de Maturação: pode começar cerca de três semanas após o ferimento e durar vários meses ou até anos. É caracterizada pelo fortalecimento e remodelagem das fibras de colágeno, que são reorganizadas formando ângulos com as margens da ferida. A cicatriz madura pode apresentar hiperpigmentação ou hipopigmentação e espessura palpável devido à fibrose da derme.'
+            'Fase inflamatória: Ocorre imediatamente após o trauma e dura cerca de três a quatro dias. É caracterizada pelos sinais e sintomas inflamatórios, como edema, hiperemia, calor moderado e dor. A inflamação tem o objetivo de minimizar os efeitos do traumatismo ou bactérias patogênicas. *Fase Proliferativa: É caracterizada pela deposição do colágeno, formação do tecido de granulação, contração da ferida, reepitelização e angiogênese. Os macrófagos são importantes nessa fase, produzindo fatores de crescimento para atrair fibroblastos que produzem fibras de colágeno. *Fase de Maturação: Pode começar cerca de três semanas após o ferimento e durar vários meses ou até anos. É caracterizada pelo fortalecimento e remodelagem das fibras de colágeno, que são reorganizadas formando ângulos com as margens da ferida. A cicatriz madura pode apresentar hiperpigmentação ou hipopigmentação e espessura palpável devido à fibrose da derme.'
         //'image': imageBytes,
       },
       conflictAlgorithm: ConflictAlgorithm.replace,
     );
   }
+
+  Future<void> insertCicatrizacaoFormasCicatrizacao(Database db) async {
+    await db.insert(
+      'study',
+      {
+        'title': 'Formas de cicatrização',
+        'content':
+            'Cicatrização por Primeira Intenção: Ocorre quando a pele é cortada de maneira limpa e asséptica, com bordas aproximadas por suturas. Feridas fechadas dessa maneira cicatrizam sem complicações e com formação de tecido cicatricial discreto. *Cicatrização por Segunda Intenção:As feridas abertas demandam mais tempo para cicatrizar e podem resultar em uma cicatriz menos exuberante devido à grande formação de tecido de granulação. *Cicatrização por Terceira Intençäo:A ferida é deixada aberta por um período determinado antes de ser suturada como uma ferida de primeira intenção. Esse tipo de cicatrização é utilizado em feridas cirúrgicas com suspeita de infecção.'
+        //'image': imageBytes,
+      },
+      conflictAlgorithm: ConflictAlgorithm.replace,
+    );
+  }
+
+  Future<void> insertSecrecoesTransudato(Database db) async {
+    await db.insert(
+      'study',
+      {
+        'title': 'Transudato',
+        'content':
+            'Transudato é um fluido que extravasa dos vasos sanguíneos para os tecidos, em decorrência de um desequilíbrio hidrostático ou osmótico, esse fluido apresenta baixa concentração de proteínas e poucas células, geralmente neutrófilos.\nPode ser encontrado em diversas condições clínicas, como insuficiência cardíaca congestiva, cirrose hepática, síndrome nefrótica e desnutrição. O seu acúmulo em determinados tecidos pode causar edema, que é a retenção de líquidos em excesso, podendo gerar desconforto, dor e diminuição da mobilidade.'
+        //'image': imageBytes,
+      },
+      conflictAlgorithm: ConflictAlgorithm.replace,
+    );
+  }
+
+  Future<void> insertSecrecoesExsudato(Database db) async {
+    await db.insert(
+      'study',
+      {
+        'title': 'Exsudato',
+        'content':
+            'Exsudato:É um material fluido, composto por células que escapam de um vaso sanguíneo e se depositam nos tecidos ou nas superfícies teciduais, usualmente como resultado de um processo inflamatório. O exsudato é caracterizado por um alto conteúdo de proteínas, células e materiais sólidos derivados das células. Os exsudatos das reações inflamatórias variam no conteúdo de líquido, proteínas plasmáticas e células.'
+        //'image': imageBytes,
+      },
+      conflictAlgorithm: ConflictAlgorithm.replace,
+    );
+  }
+
+  Future<void> insertSecrecoesExsudatoSeroso(Database db) async {
+    await db.insert(
+      'study',
+      {
+        'title': 'Exsudato seroso',
+        'content':
+            'Exsudato seroso: É caracterizado por uma extensa liberação de líquido, com baixo conteúdo protéico, que conforme o local da agressão origina-se de soro sanguíneo ou das secreções serosas das células mesoteliais. Esse tipo de exsudato inflamatório é observado precocemente nas fases de desenvolvimento da maioria das reações inflamatórias agudas, encontrada nos estágios da infecção bacteriana.'
+        //'image': imageBytes,
+      },
+      conflictAlgorithm: ConflictAlgorithm.replace,
+    );
+  }
+
+  Future<void> insertSecrecoesExsudatoSanguinolento(Database db) async {
+    await db.insert(
+      'study',
+      {
+        'title': 'Exsudato sanguinolento',
+        'content':
+            'Exsudato sanguinolento: É decorrente de lesões com ruptura de vasos ou de hemácias. Não é uma forma distinta de exsudação, é quase sempre, um exsudato fibrinoso ou supurativo, acompanhado pelo extravasamento de grande quantidade de hemácias.'
+        //'image': imageBytes,
+      },
+      conflictAlgorithm: ConflictAlgorithm.replace,
+    );
+  }
+
+  Future<void> insertSecrecoesExsudatoPurulento(Database db) async {
+    await db.insert(
+      'study',
+      {
+        'title': 'Exsudato purulento',
+        'content':
+            'Exsudato purulento: É um líquido composto por células e proteínas, produzido por um processo inflamatório asséptico ou séptico.\nAlguns microrganismos (estafilococos, pneumococos, meningococos, gonococos, coliformes e algumas amostras não hemolíticas dos estreptococos) produzem de forma característica, supuração local e por isso são chamados de bactérias piogênicas (produtoras de pus).'
+                .replaceAll(RegExp(r'\s-\s'), '\n-'),
+        //'image': imageBytes,
+      },
+      conflictAlgorithm: ConflictAlgorithm.replace,
+    );
+  }
+
+  Future<void> insertSecrecoesExsudatoFibrinoso(Database db) async {
+    await db.insert(
+      'study',
+      {
+        'title': 'Exsudato fibrinoso',
+        'content':
+            'Exsudato fibrinoso: É o extravasamento de grande quantidade de proteínas plasmáticas, incluindo o fibrinogênio, e a participação de grandes massas de fibrina.'
+        //'image': imageBytes,
+      },
+      conflictAlgorithm: ConflictAlgorithm.replace,
+    );
+  }
+
   Future<List<Map<String, dynamic>>> getData(String title) async {
     final Database db = await createDatabase();
     return await db.query('study', where: 'title = ?', whereArgs: [title]);

@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:tcc/app/views/cicatrizacao/estudo_cicatrizacao.dart';
+import 'package:tcc/app/views/cicatrizacao/fases_cicatrizacao.dart';
 import 'package:tcc/app/views/curativos/tipos_coberturas.dart';
 import '../../controllers/banco_de_dados.dart';
 
@@ -54,7 +56,7 @@ class _EstudoCicatrizacaoTiposCicatrizacaoState
             color: Color.fromRGBO(62, 132, 158, 100),
           ),
           onPressed: () {
-            Navigator.pushNamed(context, '/estudo_curativos');
+            Navigator.pushNamed(context, '/estudo_cicatrizacao');
           },
         ),
         title: const Text(
@@ -245,7 +247,7 @@ class _EstudoCicatrizacaoTiposCicatrizacaoState
                     context,
                     MaterialPageRoute(
                         builder: (context) =>
-                            const EstudoCurativosTiposCoberturas()),
+                            const EstudoCicatrizacaoFasesCicatrizacao()),
                   );
                 },
                 style: ElevatedButton.styleFrom(

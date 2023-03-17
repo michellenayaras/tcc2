@@ -1,8 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:tcc/app/views/curativos/anotacao_enfermagem.dart';
-import 'package:tcc/app/views/curativos/estudo_curativos.dart';
-import 'package:tcc/app/views/curativos/materiais_necessarios.dart';
-import 'package:tcc/app/views/curativos/tecnicas_curativos.dart';
 import '../../controllers/banco_de_dados.dart';
 
 class EstudoCurativosTiposCurativos extends StatefulWidget {
@@ -124,17 +121,47 @@ class _EstudoCurativosTiposCurativosState
                                 'Incisões cirúrgicas com bordos aproximados, cicatrização por primeira intenção:',
                             style: TextStyle(fontWeight: FontWeight.bold),
                           ),
-                          TextSpan(text: firstParagraph),
+                          TextSpan(
+                            text:
+                                '$firstParagraph\n', // adicione \n para quebrar a linha
+                          ),
+                          const WidgetSpan(
+                            child: SizedBox(height: 10),
+                          ),
+                          const WidgetSpan(
+                            child: Divider(
+                              color: Color.fromARGB(255, 126, 124, 124),
+                              thickness: 0.8,
+                            ),
+                          ),
                           const TextSpan(
                             text: '\n\nFeridas abertas: ',
                             style: TextStyle(fontWeight: FontWeight.bold),
                           ),
                           TextSpan(text: secondParagraph),
+                          const WidgetSpan(
+                            child: SizedBox(height: 10),
+                          ),
+                          const WidgetSpan(
+                            child: Divider(
+                              color: Color.fromARGB(255, 126, 124, 124),
+                              thickness: 0.8,
+                            ),
+                          ),
                           const TextSpan(
                             text: '\n\nLesões fechadas: ',
                             style: TextStyle(fontWeight: FontWeight.bold),
                           ),
                           TextSpan(text: thirdParagraph),
+                          const WidgetSpan(
+                            child: SizedBox(height: 10),
+                          ),
+                          const WidgetSpan(
+                            child: Divider(
+                              color: Color.fromARGB(255, 126, 124, 124),
+                              thickness: 0.8,
+                            ),
+                          ),
                           const TextSpan(
                             text: '\n\nDrenos: ',
                             style: TextStyle(fontWeight: FontWeight.bold),

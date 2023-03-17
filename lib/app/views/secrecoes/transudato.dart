@@ -1,22 +1,24 @@
 import 'package:flutter/material.dart';
 import 'package:tcc/app/views/lesoes/estudo_tamanho_lesao.dart';
+import 'package:tcc/app/views/secrecoes/exsudato.dart';
 import '../../controllers/banco_de_dados.dart';
 
-class EstudoLesoesIntroducao extends StatefulWidget {
-  const EstudoLesoesIntroducao({Key? key}) : super(key: key);
+class EstudoSecrecoesTransudato extends StatefulWidget {
+  const EstudoSecrecoesTransudato({Key? key}) : super(key: key);
 
   @override
   // ignore: library_private_types_in_public_api
-  _EstudoLesoesIntroducaoState createState() => _EstudoLesoesIntroducaoState();
+  _EstudoSecrecoesTransudatoState createState() =>
+      _EstudoSecrecoesTransudatoState();
 }
 
-class _EstudoLesoesIntroducaoState extends State<EstudoLesoesIntroducao> {
+class _EstudoSecrecoesTransudatoState extends State<EstudoSecrecoesTransudato> {
   late Future<List<Map<String, dynamic>>> _data;
 
   @override
   void initState() {
     super.initState();
-    _data = MyDatabase().getData('Lesões de pele');
+    _data = MyDatabase().getData('Transudato');
   }
 
   @override
@@ -52,11 +54,11 @@ class _EstudoLesoesIntroducaoState extends State<EstudoLesoesIntroducao> {
             color: Color.fromRGBO(62, 132, 158, 100),
           ),
           onPressed: () {
-            Navigator.pushNamed(context, '/estudo_lesoes');
+            Navigator.pushNamed(context, '/estudo_secrecoes');
           },
         ),
         title: const Text(
-          'Introdução',
+          'Transudato',
           style: TextStyle(
             color: Color.fromRGBO(62, 132, 158, 100),
             fontSize: 20.0,
@@ -169,7 +171,7 @@ class _EstudoLesoesIntroducaoState extends State<EstudoLesoesIntroducao> {
                   Navigator.push(
                     context,
                     MaterialPageRoute(
-                        builder: (context) => const EstudoLesoesProfundidade()),
+                        builder: (context) => const EstudoSecrecoesExsudato()),
                   );
                 },
                 style: ElevatedButton.styleFrom(

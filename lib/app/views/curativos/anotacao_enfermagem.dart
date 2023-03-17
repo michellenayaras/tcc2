@@ -1,7 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:tcc/app/views/curativos/etapas_execucao.dart';
-import 'package:tcc/app/views/curativos/materiais_necessarios.dart';
-import 'package:tcc/app/views/curativos/tipos_coberturas.dart';
 import 'package:tcc/app/views/curativos/tipos_curativos.dart';
 import '../../controllers/banco_de_dados.dart';
 

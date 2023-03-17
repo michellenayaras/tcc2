@@ -1,7 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:tcc/app/views/curativos/estudo_curativos.dart';
 import 'package:tcc/app/views/curativos/tipos_coberturas.dart';
-import 'package:tcc/app/views/lesoes/estudo_tamanho_lesao.dart';
 import '../../controllers/banco_de_dados.dart';
 
 class EstudoCurativosTecnicasCurativos extends StatefulWidget {

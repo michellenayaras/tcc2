@@ -1,9 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:tcc/app/views/curativos/estudo_curativos.dart';
 import 'package:tcc/app/views/curativos/etapas_execucao.dart';
 import 'package:tcc/app/views/curativos/tipos_coberturas.dart';
-import 'package:tcc/app/views/lesoes/estudo_infeccao.dart';
-import 'package:tcc/app/views/lesoes/estudo_tipos_feridas.dart';
 import '../../controllers/banco_de_dados.dart';
 
 class EstudoCurativosMateriaisNecessarios extends StatefulWidget {

@@ -1,22 +1,25 @@
 import 'package:flutter/material.dart';
-import 'package:tcc/app/views/lesoes/estudo_tamanho_lesao.dart';
+import 'package:tcc/app/views/secrecoes/exsudato.dart';
+import 'package:tcc/app/views/secrecoes/exsudato_purulento.dart';
 import '../../controllers/banco_de_dados.dart';
 
-class EstudoLesoesIntroducao extends StatefulWidget {
-  const EstudoLesoesIntroducao({Key? key}) : super(key: key);
+class EstudoSecrecoesExsudatoFibrinoso extends StatefulWidget {
+  const EstudoSecrecoesExsudatoFibrinoso({Key? key}) : super(key: key);
 
   @override
   // ignore: library_private_types_in_public_api
-  _EstudoLesoesIntroducaoState createState() => _EstudoLesoesIntroducaoState();
+  _EstudoSecrecoesExsudatoFibrinosoState createState() =>
+      _EstudoSecrecoesExsudatoFibrinosoState();
 }
 
-class _EstudoLesoesIntroducaoState extends State<EstudoLesoesIntroducao> {
+class _EstudoSecrecoesExsudatoFibrinosoState
+    extends State<EstudoSecrecoesExsudatoFibrinoso> {
   late Future<List<Map<String, dynamic>>> _data;
 
   @override
   void initState() {
     super.initState();
-    _data = MyDatabase().getData('Lesões de pele');
+    _data = MyDatabase().getData('Exsudato fibrinoso');
   }
 
   @override
@@ -52,11 +55,11 @@ class _EstudoLesoesIntroducaoState extends State<EstudoLesoesIntroducao> {
             color: Color.fromRGBO(62, 132, 158, 100),
           ),
           onPressed: () {
-            Navigator.pushNamed(context, '/estudo_lesoes');
+            Navigator.pushNamed(context, '/estudo_secrecoes');
           },
         ),
         title: const Text(
-          'Introdução',
+          'Exsudato fibrinoso',
           style: TextStyle(
             color: Color.fromRGBO(62, 132, 158, 100),
             fontSize: 20.0,
@@ -78,28 +81,73 @@ class _EstudoLesoesIntroducaoState extends State<EstudoLesoesIntroducao> {
               itemBuilder: (context, index) {
                 final item = data[index];
                 final text = item['content'] as String;
-                final firstParagraphEndIndex = text.indexOf('.');
-                final firstParagraph =
-                    text.substring(0, firstParagraphEndIndex + 1);
-                final secondParagraph =
-                    text.substring(firstParagraphEndIndex + 1).trim();
-                final fullText = '$firstParagraph\n\n$secondParagraph';
+                final boldText = text.replaceFirstMapped(
+                    RegExp(r'^(\w+):'), (match) => '${match.group(1)}:');
 
                 return Container(
                   padding: const EdgeInsets.all(12.0),
                   child: ListTile(
-                    title: Text(
-                      fullText,
-                      style: const TextStyle(
-                        fontFamily: 'Roboto',
-                        fontSize: 18,
-                        fontWeight: FontWeight.normal,
-                        fontStyle: FontStyle.normal,
-                        letterSpacing: 0.15,
-                        wordSpacing: 0.5,
-                        height: 1.5,
-                      ),
-                      textAlign: TextAlign.justify,
+                    title: Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        Text.rich(
+                          TextSpan(
+                            text: '',
+                            children: [
+                              TextSpan(
+                                text: '${boldText.split(':')[0]}:',
+                                style: const TextStyle(
+                                  fontWeight: FontWeight.bold,
+                                  fontSize: 18,
+                                ),
+                              ),
+                              TextSpan(
+                                text: boldText.split(':')[1],
+                                style: const TextStyle(
+                                  fontFamily: 'Roboto',
+                                  fontSize: 18,
+                                  fontWeight: FontWeight.normal,
+                                  fontStyle: FontStyle.normal,
+                                  letterSpacing: 0.15,
+                                  wordSpacing: 0.5,
+                                  height: 1.5,
+                                ),
+                              ),
+                            ],
+                          ),
+                          textAlign: TextAlign.justify,
+                        ),
+                        const SizedBox(
+                          height: 24.0,
+                        ),
+                        Card(
+                          elevation: 3,
+                          shape: RoundedRectangleBorder(
+                            borderRadius: BorderRadius.circular(8),
+                            side: const BorderSide(color: Colors.grey),
+                          ),
+                          child: Container(
+                            decoration: BoxDecoration(
+                              borderRadius: BorderRadius.circular(8),
+                              border: Border.all(color: Colors.white, width: 4),
+                            ),
+                            child: ClipRRect(
+                              borderRadius: BorderRadius.circular(8),
+                              child: Ink.image(
+                                image: const AssetImage(
+                                    'assets/images/exsudato_fibrinoso.jpg'),
+                                fit: BoxFit.cover,
+                                height: 300.0,
+                                child: InkWell(
+                                  onTap: () {
+                                    // Ação a ser executada ao clicar na imagem
+                                  },
+                                ),
+                              ),
+                            ),
+                          ),
+                        )
+                      ],
                     ),
                     onTap: () {
                       // Navegar para a tela do tema correspondente
@@ -131,10 +179,16 @@ class _EstudoLesoesIntroducaoState extends State<EstudoLesoesIntroducao> {
               width: 112,
               child: ElevatedButton(
                 onPressed: () {
-                  // Ação do botão anterior
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                      builder: (context) =>
+                          const EstudoSecrecoesExsudatoPurulento(),
+                    ),
+                  );
                 },
                 style: ElevatedButton.styleFrom(
-                  backgroundColor: Colors.white30,
+                  backgroundColor: const Color.fromRGBO(62, 132, 158, 100),
                   shape: RoundedRectangleBorder(
                     borderRadius:
                         BorderRadius.circular(20), // set the border radius
@@ -166,23 +220,17 @@ class _EstudoLesoesIntroducaoState extends State<EstudoLesoesIntroducao> {
               width: 112,
               child: ElevatedButton(
                 onPressed: () {
-                  Navigator.push(
-                    context,
-                    MaterialPageRoute(
-                        builder: (context) => const EstudoLesoesProfundidade()),
-                  );
+                  // Ação do botão anterior
                 },
                 style: ElevatedButton.styleFrom(
-                  backgroundColor: const Color.fromRGBO(
-                      62, 132, 158, 100), // set the background color
+                  backgroundColor: Colors.white30,
                   shape: RoundedRectangleBorder(
                     borderRadius:
                         BorderRadius.circular(20), // set the border radius
                   ),
                 ),
                 child: Row(
-                  mainAxisAlignment:
-                      MainAxisAlignment.end, // centralizar o texto e o ícone
+                  mainAxisAlignment: MainAxisAlignment.end,
                   children: const [
                     Text(
                       'Próximo',
@@ -190,9 +238,10 @@ class _EstudoLesoesIntroducaoState extends State<EstudoLesoesIntroducao> {
                         fontFamily: 'Roboto',
                         color: Colors.white,
                       ),
-                      textAlign: TextAlign.justify,
+                      textAlign: TextAlign.center,
                     ),
-                    SizedBox(width: 1),
+                    SizedBox(
+                        width: 1), // adicione um espaço entre o ícone e o texto
                     Icon(
                       Icons.arrow_forward_ios_rounded, // set the icon
                       color: Colors.white, // set the icon color

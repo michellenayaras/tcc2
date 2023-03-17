@@ -5,7 +5,6 @@ import 'package:tcc/app/views/curativos/materiais_necessarios.dart';
 import 'package:tcc/app/views/curativos/tecnicas_curativos.dart';
 import 'package:tcc/app/views/curativos/tipos_coberturas.dart';
 import 'package:tcc/app/views/curativos/tipos_curativos.dart';
-import 'package:tcc/app/views/tecidos/tecido_nervoso.dart';
 
 class EstudoCurativos extends StatelessWidget {
   const EstudoCurativos({Key? key}) : super(key: key);

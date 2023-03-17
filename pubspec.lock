@@ -9,6 +9,22 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "2.10.0"
+  auto_hyphenating_text:
+    dependency: "direct main"
+    description:
+      name: auto_hyphenating_text
+      sha256: "2ac27338636456a00a832654b3afb578e520ad199634f58c010e71bc61fc3ffd"
+      url: "https://pub.dev"
+    source: hosted
+    version: "0.0.5"
+  auto_size_text:
+    dependency: "direct main"
+    description:
+      name: auto_size_text
+      sha256: "3f5261cd3fb5f2a9ab4e2fc3fba84fd9fcaac8821f20a1d4e71f557521b22599"
+      url: "https://pub.dev"
+    source: hosted
+    version: "3.0.0"
   boolean_selector:
     dependency: transitive
     description:
@@ -41,6 +57,14 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "1.17.0"
+  csslib:
+    dependency: transitive
+    description:
+      name: csslib
+      sha256: b36c7f7e24c0bdf1bf9a3da461c837d1de64b9f8beb190c9011d8c72a3dfd745
+      url: "https://pub.dev"
+    source: hosted
+    version: "0.17.2"
   cupertino_icons:
     dependency: "direct main"
     description:
@@ -91,6 +115,30 @@ packages:
     description: flutter
     source: sdk
     version: "0.0.0"
+  flutter_widget_from_html_core:
+    dependency: "direct main"
+    description:
+      name: flutter_widget_from_html_core
+      sha256: eb5f296716e14224b5d3f139bc55e3e8a7a8840c46ade3704dd8beea1a79412c
+      url: "https://pub.dev"
+    source: hosted
+    version: "0.7.0"
+  html:
+    dependency: transitive
+    description:
+      name: html
+      sha256: "79d498e6d6761925a34ee5ea8fa6dfef38607781d2fa91e37523474282af55cb"
+      url: "https://pub.dev"
+    source: hosted
+    version: "0.15.2"
+  hyphenator_impure:
+    dependency: transitive
+    description:
+      name: hyphenator_impure
+      sha256: "4fc768bbb59d2dddba463bfddf90e6373c3088273f5a949c1be79b5adc906319"
+      url: "https://pub.dev"
+    source: hosted
+    version: "0.1.1"
   js:
     dependency: transitive
     description:

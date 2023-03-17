@@ -1,27 +1,25 @@
 import 'package:flutter/material.dart';
-import 'package:tcc/app/views/cicatrizacao/estudo_cicatrizacao.dart';
-import 'package:tcc/app/views/cicatrizacao/formas_cicatriza%C3%A7%C3%A3o.dart';
-import 'package:tcc/app/views/cicatrizacao/tipos_cicatrizacao.dart';
+import 'package:tcc/app/views/cicatrizacao/fases_cicatrizacao.dart';
 import 'package:tcc/app/views/curativos/tipos_coberturas.dart';
 import '../../controllers/banco_de_dados.dart';
 
-class EstudoCicatrizacaoFasesCicatrizacao extends StatefulWidget {
-  const EstudoCicatrizacaoFasesCicatrizacao({Key? key}) : super(key: key);
+class EstudoCicatrizacaoFormasCicatrizacao extends StatefulWidget {
+  const EstudoCicatrizacaoFormasCicatrizacao({Key? key}) : super(key: key);
 
   @override
   // ignore: library_private_types_in_public_api
-  _EstudoCicatrizacaoFasesCicatrizacaoState createState() =>
-      _EstudoCicatrizacaoFasesCicatrizacaoState();
+  _EstudoCicatrizacaoFormasCicatrizacaoState createState() =>
+      _EstudoCicatrizacaoFormasCicatrizacaoState();
 }
 
-class _EstudoCicatrizacaoFasesCicatrizacaoState
-    extends State<EstudoCicatrizacaoFasesCicatrizacao> {
+class _EstudoCicatrizacaoFormasCicatrizacaoState
+    extends State<EstudoCicatrizacaoFormasCicatrizacao> {
   late Future<List<Map<String, dynamic>>> _data;
 
   @override
   void initState() {
     super.initState();
-    _data = MyDatabase().getData('Fases da cicatrização de feridas');
+    _data = MyDatabase().getData('Formas de cicatrização');
   }
 
   @override
@@ -61,7 +59,7 @@ class _EstudoCicatrizacaoFasesCicatrizacaoState
           },
         ),
         title: const Text(
-          'Fases da cicatrização de feridas',
+          'Formas de cicatrizaçãos',
           style: TextStyle(
             color: Color.fromRGBO(62, 132, 158, 100),
             fontSize: 20.0,
@@ -147,7 +145,7 @@ class _EstudoCicatrizacaoFasesCicatrizacaoState
                       Container(
                         padding: const EdgeInsets.all(12.0),
                         child: const Text(
-                          'As fases da cicatrização de feridas são um processo complexo que ocorre naturalmente em nosso organismo para reparar os tecidos danificados por uma lesão ou trauma. Essas fases são divididas em três etapas distintas: inflamatória, proliferativa e de maturação.',
+                          'O cuidado das feridas traumáticas é determinado pela forma como são tratadas. Um fator determinante é o tipo de fechamento em função do tempo e riscos de complicações. Cada tipo de fechamento de feridas tem um efeito sobre a cicatrização. Pode ocorrer cicatrização por primeira, segunda ou terceira intenção.',
                           style: TextStyle(
                             fontFamily: 'Roboto',
                             fontSize: 18,
@@ -223,7 +221,7 @@ class _EstudoCicatrizacaoFasesCicatrizacaoState
                     context,
                     MaterialPageRoute(
                       builder: (context) =>
-                          const EstudoCicatrizacaoTiposCicatrizacao(),
+                          const EstudoCicatrizacaoFasesCicatrizacao(),
                     ),
                   );
                 },
@@ -260,24 +258,17 @@ class _EstudoCicatrizacaoFasesCicatrizacaoState
               width: 112,
               child: ElevatedButton(
                 onPressed: () {
-                  Navigator.push(
-                    context,
-                    MaterialPageRoute(
-                        builder: (context) =>
-                            const EstudoCicatrizacaoFormasCicatrizacao()),
-                  );
+                  // Ação do botão anterior
                 },
                 style: ElevatedButton.styleFrom(
-                  backgroundColor: const Color.fromRGBO(
-                      62, 132, 158, 100), // set the background color
+                  backgroundColor: Colors.white30,
                   shape: RoundedRectangleBorder(
                     borderRadius:
                         BorderRadius.circular(20), // set the border radius
                   ),
                 ),
                 child: Row(
-                  mainAxisAlignment:
-                      MainAxisAlignment.end, // centralizar o texto e o ícone
+                  mainAxisAlignment: MainAxisAlignment.end,
                   children: const [
                     Text(
                       'Próximo',
@@ -285,9 +276,10 @@ class _EstudoCicatrizacaoFasesCicatrizacaoState
                         fontFamily: 'Roboto',
                         color: Colors.white,
                       ),
-                      textAlign: TextAlign.justify,
+                      textAlign: TextAlign.center,
                     ),
-                    SizedBox(width: 1),
+                    SizedBox(
+                        width: 1), // adicione um espaço entre o ícone e o texto
                     Icon(
                       Icons.arrow_forward_ios_rounded, // set the icon
                       color: Colors.white, // set the icon color

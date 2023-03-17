@@ -1,22 +1,25 @@
 import 'package:flutter/material.dart';
 import 'package:tcc/app/views/lesoes/estudo_tamanho_lesao.dart';
+import 'package:tcc/app/views/secrecoes/exsudato_seroso.dart';
+import 'package:tcc/app/views/secrecoes/transudato.dart';
 import '../../controllers/banco_de_dados.dart';
 
-class EstudoLesoesIntroducao extends StatefulWidget {
-  const EstudoLesoesIntroducao({Key? key}) : super(key: key);
+class EstudoSecrecoesExsudato extends StatefulWidget {
+  const EstudoSecrecoesExsudato({Key? key}) : super(key: key);
 
   @override
   // ignore: library_private_types_in_public_api
-  _EstudoLesoesIntroducaoState createState() => _EstudoLesoesIntroducaoState();
+  _EstudoSecrecoesExsudatoState createState() =>
+      _EstudoSecrecoesExsudatoState();
 }
 
-class _EstudoLesoesIntroducaoState extends State<EstudoLesoesIntroducao> {
+class _EstudoSecrecoesExsudatoState extends State<EstudoSecrecoesExsudato> {
   late Future<List<Map<String, dynamic>>> _data;
 
   @override
   void initState() {
     super.initState();
-    _data = MyDatabase().getData('Lesões de pele');
+    _data = MyDatabase().getData('Exsudato');
   }
 
   @override
@@ -52,11 +55,11 @@ class _EstudoLesoesIntroducaoState extends State<EstudoLesoesIntroducao> {
             color: Color.fromRGBO(62, 132, 158, 100),
           ),
           onPressed: () {
-            Navigator.pushNamed(context, '/estudo_lesoes');
+            Navigator.pushNamed(context, '/estudo_secrecoes');
           },
         ),
         title: const Text(
-          'Introdução',
+          'Exsudato',
           style: TextStyle(
             color: Color.fromRGBO(62, 132, 158, 100),
             fontSize: 20.0,
@@ -78,28 +81,43 @@ class _EstudoLesoesIntroducaoState extends State<EstudoLesoesIntroducao> {
               itemBuilder: (context, index) {
                 final item = data[index];
                 final text = item['content'] as String;
-                final firstParagraphEndIndex = text.indexOf('.');
-                final firstParagraph =
-                    text.substring(0, firstParagraphEndIndex + 1);
-                final secondParagraph =
-                    text.substring(firstParagraphEndIndex + 1).trim();
-                final fullText = '$firstParagraph\n\n$secondParagraph';
+                final boldText = text.replaceFirstMapped(
+                    RegExp(r'^(\w+):'), (match) => '${match.group(1)}:');
 
                 return Container(
                   padding: const EdgeInsets.all(12.0),
                   child: ListTile(
-                    title: Text(
-                      fullText,
-                      style: const TextStyle(
-                        fontFamily: 'Roboto',
-                        fontSize: 18,
-                        fontWeight: FontWeight.normal,
-                        fontStyle: FontStyle.normal,
-                        letterSpacing: 0.15,
-                        wordSpacing: 0.5,
-                        height: 1.5,
-                      ),
-                      textAlign: TextAlign.justify,
+                    title: Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        Text.rich(
+                          TextSpan(
+                            text: '',
+                            children: [
+                              TextSpan(
+                                text: '${boldText.split(':')[0]}:',
+                                style: const TextStyle(
+                                  fontWeight: FontWeight.bold,
+                                  fontSize: 18,
+                                ),
+                              ),
+                              TextSpan(
+                                text: boldText.split(':')[1],
+                                style: const TextStyle(
+                                  fontFamily: 'Roboto',
+                                  fontSize: 18,
+                                  fontWeight: FontWeight.normal,
+                                  fontStyle: FontStyle.normal,
+                                  letterSpacing: 0.15,
+                                  wordSpacing: 0.5,
+                                  height: 1.5,
+                                ),
+                              ),
+                            ],
+                          ),
+                          textAlign: TextAlign.justify,
+                        ),
+                      ],
                     ),
                     onTap: () {
                       // Navegar para a tela do tema correspondente
@@ -131,10 +149,15 @@ class _EstudoLesoesIntroducaoState extends State<EstudoLesoesIntroducao> {
               width: 112,
               child: ElevatedButton(
                 onPressed: () {
-                  // Ação do botão anterior
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                      builder: (context) => const EstudoSecrecoesTransudato(),
+                    ),
+                  );
                 },
                 style: ElevatedButton.styleFrom(
-                  backgroundColor: Colors.white30,
+                  backgroundColor: const Color.fromRGBO(62, 132, 158, 100),
                   shape: RoundedRectangleBorder(
                     borderRadius:
                         BorderRadius.circular(20), // set the border radius
@@ -169,7 +192,8 @@ class _EstudoLesoesIntroducaoState extends State<EstudoLesoesIntroducao> {
                   Navigator.push(
                     context,
                     MaterialPageRoute(
-                        builder: (context) => const EstudoLesoesProfundidade()),
+                        builder: (context) =>
+                            const EstudoSecrecoesExsudatoSeroso()),
                   );
                 },
                 style: ElevatedButton.styleFrom(

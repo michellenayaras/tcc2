@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:tcc/app/views/curativos/anotacao_enfermagem.dart';
 import 'package:tcc/app/views/curativos/materiais_necessarios.dart';
-import 'package:tcc/app/views/curativos/tipos_coberturas.dart';
 import '../../controllers/banco_de_dados.dart';
 
 class EstudoCurativosEtapasExecucao extends StatefulWidget {

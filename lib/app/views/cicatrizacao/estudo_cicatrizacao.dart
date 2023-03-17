@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:tcc/app/views/cicatrizacao/fases_cicatrizacao.dart';
+import 'package:tcc/app/views/cicatrizacao/formas_cicatriza%C3%A7%C3%A3o.dart';
 import 'package:tcc/app/views/cicatrizacao/tipos_cicatrizacao.dart';
 
 class EstudoCicatrizacao extends StatelessWidget {
@@ -132,13 +133,13 @@ class EstudoCicatrizacao extends StatelessWidget {
               ),
               onTap: () async {
                 // Navegar para a próxima tela
-                // Navigator.push(
-                //   context,
-                //   MaterialPageRoute(
-                //     builder: (context) =>
-                //         const EstudoCicatrizacaoMateriaisNecessarios(),
-                //   ),
-                // );
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                    builder: (context) =>
+                        const EstudoCicatrizacaoFormasCicatrizacao(),
+                  ),
+                );
               },
               tileColor: Colors.white,
               contentPadding: const EdgeInsets.symmetric(vertical: 8.0),
