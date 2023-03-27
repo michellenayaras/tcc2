@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:tcc/app/views/tratamentos/bota_unna.dart';
 
 class EstudoTratamentos extends StatelessWidget {
   const EstudoTratamentos({Key? key}) : super(key: key);
@@ -57,12 +58,12 @@ class EstudoTratamentos extends StatelessWidget {
               ),
               onTap: () async {
                 // Navegar para a próxima tela
-                // Navigator.push(
-                //   context,
-                //   MaterialPageRoute(
-                //     builder: (context) => const EstudoTratamentosTransudato(),
-                //   ),
-                // );
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                    builder: (context) => const EstudoTratamentoBotaUnna(),
+                  ),
+                );
               },
               tileColor: Colors.white, // Define a cor de fundo do item
               contentPadding: const EdgeInsets.symmetric(vertical: 8.0),

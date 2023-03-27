@@ -43,6 +43,7 @@ class MyDatabase {
         await insertSecrecoesExsudatoSanguinolento(db);
         await insertSecrecoesExsudatoPurulento(db);
         await insertSecrecoesExsudatoFibrinoso(db);
+        await insertTratamentoBotaUna(db);
       },
       version: 1,
     );
@@ -414,6 +415,19 @@ class MyDatabase {
         'title': 'Exsudato fibrinoso',
         'content':
             'Exsudato fibrinoso: É o extravasamento de grande quantidade de proteínas plasmáticas, incluindo o fibrinogênio, e a participação de grandes massas de fibrina.'
+        //'image': imageBytes,
+      },
+      conflictAlgorithm: ConflictAlgorithm.replace,
+    );
+  }
+
+Future<void> insertTratamentoBotaUna(Database db) async {
+    await db.insert(
+      'study',
+      {
+        'title': 'Bota de unna',
+        'content':
+            '{DESCRIÇÃO} *Bandagem de algodão puro ou misto impregnada com óxido de zinco, glicerina, óleo de castor ou mineral.* {TIPO DE TRATAMENTO} *Cobertura primária ou secundária* {TIPO DE FERIDA} *Feridas decorrente de insuficiência venosa* {MECANISMO DE AÇÃO} *Possui atividade cicatrizante e reepitelizante, atuando na contenção de edema ao auxiliar no melhor retorno venoso e redução de exsudato.* {INDICAÇÃO} *Úlceras Venosas de MMII* {CONTRAINDICAÇÃO} *● Hipersensibilidade aos componentes do produto. \n● Bota de Unna é contraindicada para úlcera arterial. No caso de úlcera mista encaminhar para avaliação médica. \n● Em casos de Diabetes Mellitus avaliar bem a perfusão do membro acometido. \n● Em casos de celulite (inchaço e eritema na área da ferida) e processo inflamatório intenso.* {MODO DE USAR} *● Aplicar preferencialmente no período da manhã, Solicitar ao paciente manter os membros afetados elevados acima do nível do corpo por no mínimo 15 minutos, antes do procedimento, na primeira aplicação e sempre que necessário na presença de edema. \n● Avaliar a ferida e a necessidade de associação com outra cobertura primária, realizar o curativo. \n● Iniciar o enfaixamento da bandagem pelos artelhos, aplicando progressivamente até a tuberosidade tibial. \n● Na presença de muito exsudato, principalmente nas primeiras trocas, colocar gaze ou chumaço por cima da bota no local da lesão e enfaixar com atadura de crepe sobre a bota de unna.* {PERÍODO DE TROCA} *Após 1ª colocação, avaliação clínica em 24hs ou 48hs e 1ª troca em 4 dias. Após controle do exsudato deve permanecer até 7 dias. Trocar a cobertura secundária sempre que saturada.* {OBSERVAÇÃO} *Poderá ser associado a uma cobertura primária. Avaliar a melhor técnica para enfaixamento da bandagem considerando o paciente e o produto.*'
         //'image': imageBytes,
       },
       conflictAlgorithm: ConflictAlgorithm.replace,

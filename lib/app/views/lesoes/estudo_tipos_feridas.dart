@@ -154,7 +154,7 @@ class _EstudoLesoesTiposFeridasState extends State<EstudoLesoesTiposFeridas> {
                                 Padding(
                                   padding: const EdgeInsets.all(8.0),
                                   child: Image.asset(
-                                    'assets/images/feridas_mecanicas.jpg',
+                                    'assets/images/feridas_mecanicas.png',
                                     height: 250.0,
                                     fit: BoxFit.cover,
                                   ),
